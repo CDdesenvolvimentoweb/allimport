@@ -1,6 +1,21 @@
-import React, { ReactElement } from 'react';
-import { AppBar, Toolbar, Typography, Button, Container, useScrollTrigger, Slide, Box } from '@mui/material';
+import React, { ReactElement, useState } from 'react';
+import { 
+  AppBar, 
+  Toolbar, 
+  Typography, 
+  Button, 
+  Container, 
+  useScrollTrigger, 
+  Slide, 
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText
+} from '@mui/material';
 import { motion } from 'framer-motion';
+import MenuIcon from '@mui/icons-material/Menu';
 
 interface Props {
   window?: () => Window;
@@ -21,6 +36,12 @@ function HideOnScroll(props: Props) {
 }
 
 const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -29,7 +50,43 @@ const Navbar = () => {
         block: 'start',
       });
     }
+    setMobileOpen(false);
   };
+
+  const menuItems = [
+    { text: 'Início', id: 'inicio' },
+    { text: 'Serviços', id: 'servicos' },
+    { text: 'Sobre', id: 'sobre' },
+    { text: 'Contato', id: 'contato' }
+  ];
+
+  const drawer = (
+    <Box sx={{ width: 250, bgcolor: '#1A1A1A', height: '100%', pt: 2 }}>
+      <List>
+        {menuItems.map((item) => (
+          <ListItem 
+            key={item.id}
+            onClick={() => scrollToSection(item.id)}
+            sx={{
+              '&:hover': {
+                bgcolor: 'rgba(255, 107, 0, 0.08)'
+              }
+            }}
+          >
+            <ListItemText 
+              primary={item.text} 
+              sx={{ 
+                color: '#FFFFFF',
+                '.MuiListItemText-primary': {
+                  fontSize: '1.15rem'
+                }
+              }}
+            />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
 
   return (
     <HideOnScroll>
@@ -38,7 +95,7 @@ const Navbar = () => {
         sx={{
           background: 'linear-gradient(45deg, #1A1A1A 30%, #333333 90%)',
           boxShadow: '0 4px 8px 3px rgba(255, 107, 0, .3)',
-          height: '90px',
+          height: { xs: '70px', md: '90px' },
           width: '100%',
         }}
       >
@@ -48,14 +105,14 @@ const Navbar = () => {
               py: 2,
               height: '100%',
               display: 'flex',
-              alignItems: 'center'
+              alignItems: 'center',
+              justifyContent: 'space-between'
             }}
           >
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              style={{ flexGrow: 1 }}
             >
               <Typography 
                 variant="h6" 
@@ -64,7 +121,7 @@ const Navbar = () => {
                 sx={{
                   color: '#FF6B00',
                   fontWeight: 700,
-                  fontSize: '2rem',
+                  fontSize: { xs: '1.8rem', md: '2rem' },
                   letterSpacing: '1.3px',
                   textDecoration: 'none',
                   cursor: 'pointer',
@@ -76,75 +133,84 @@ const Navbar = () => {
                 All Import
               </Typography>
             </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+
+            {/* Menu para Desktop */}
+            <Box 
+              sx={{ 
+                display: { xs: 'none', md: 'flex' },
+                gap: 1.5
+              }}
             >
-              <Box sx={{ display: 'flex', gap: 1.5 }}>
-                <Button 
-                  color="inherit"
-                  onClick={() => scrollToSection('inicio')}
-                  sx={{ 
-                    color: '#FFFFFF',
-                    fontSize: '1.15rem',
-                    padding: '12px 26px',
-                    '&:hover': {
-                      color: '#FF6B00',
-                      backgroundColor: 'rgba(255, 107, 0, 0.08)'
-                    }
-                  }}
-                >
-                  Início
-                </Button>
-                <Button 
-                  color="inherit"
-                  onClick={() => scrollToSection('servicos')}
-                  sx={{ 
-                    color: '#FFFFFF',
-                    fontSize: '1.15rem',
-                    padding: '12px 26px',
-                    '&:hover': {
-                      color: '#FF6B00',
-                      backgroundColor: 'rgba(255, 107, 0, 0.08)'
-                    }
-                  }}
-                >
-                  Serviços
-                </Button>
-                <Button 
-                  color="inherit"
-                  onClick={() => scrollToSection('sobre')}
-                  sx={{ 
-                    color: '#FFFFFF',
-                    fontSize: '1.15rem',
-                    padding: '12px 26px',
-                    '&:hover': {
-                      color: '#FF6B00',
-                      backgroundColor: 'rgba(255, 107, 0, 0.08)'
-                    }
-                  }}
-                >
-                  Sobre
-                </Button>
-                <Button 
-                  variant="contained"
-                  onClick={() => scrollToSection('contato')}
-                  sx={{ 
-                    bgcolor: '#FF6B00',
-                    fontSize: '1.15rem',
-                    padding: '12px 26px',
-                    '&:hover': {
-                      bgcolor: '#CC5500'
-                    }
-                  }}
-                >
-                  Contato
-                </Button>
-              </Box>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                {menuItems.map((item) => (
+                  <Button 
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    sx={{ 
+                      color: item.text === 'Contato' ? '#FFFFFF' : '#FFFFFF',
+                      fontSize: '1.15rem',
+                      padding: '12px 26px',
+                      ...(item.text === 'Contato' ? {
+                        bgcolor: '#FF6B00',
+                        '&:hover': {
+                          bgcolor: '#CC5500'
+                        }
+                      } : {
+                        '&:hover': {
+                          color: '#FF6B00',
+                          backgroundColor: 'rgba(255, 107, 0, 0.08)'
+                        }
+                      })
+                    }}
+                    variant={item.text === 'Contato' ? 'contained' : 'text'}
+                  >
+                    {item.text}
+                  </Button>
+                ))}
+              </motion.div>
+            </Box>
+
+            {/* Botão Menu Mobile */}
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ 
+                display: { md: 'none' },
+                color: '#FF6B00'
+              }}
+            >
+              <MenuIcon sx={{ fontSize: '2rem' }} />
+            </IconButton>
           </Toolbar>
         </Container>
+
+        {/* Drawer Mobile */}
+        <Drawer
+          variant="temporary"
+          anchor="right"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Melhor desempenho em mobile
+          }}
+          sx={{
+            display: { xs: 'block', md: 'none' },
+            '& .MuiDrawer-paper': { 
+              boxSizing: 'border-box', 
+              width: 250,
+              bgcolor: '#1A1A1A',
+              borderLeft: '2px solid #FF6B00'
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
       </AppBar>
     </HideOnScroll>
   );

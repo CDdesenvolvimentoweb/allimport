@@ -1,42 +1,17 @@
-import { useState } from 'react';
+import React from 'react';
 import {
   Box,
   Container,
   Typography,
   Grid,
-  TextField,
-  Button,
-  Paper,
-  Snackbar,
-  Alert,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-  });
-
-  const [openSnackbar, setOpenSnackbar] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aqui você implementaria a lógica de envio do formulário
-    setOpenSnackbar(true);
-    setFormData({ name: '', email: '', phone: '', message: '' });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
   return (
     <Box
       id="contato"
@@ -74,97 +49,48 @@ const Contact = () => {
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <Paper
-                component="form"
-                onSubmit={handleSubmit}
-                sx={{ p: 4 }}
-                elevation={2}
-              >
-                <Grid container spacing={3}>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      label="Nome"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      label="Email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      label="Telefone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      multiline
-                      rows={4}
-                      label="Mensagem"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      size="large"
-                      fullWidth
-                    >
-                      Enviar Mensagem
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Paper>
-            </motion.div>
-          </Grid>
-
-          <Grid item xs={12} md={6}>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <Box sx={{ height: '100%' }}>
+              <Box sx={{ 
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start'
+              }}>
                 <Typography variant="h4" gutterBottom color="primary">
                   Informações de Contato
                 </Typography>
-                <Box sx={{ mt: 4 }}>
+                <Box sx={{ mt: 4, width: '100%' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                     <LocationOnIcon sx={{ color: 'primary.main', mr: 2, fontSize: 30 }} />
                     <Typography>
-                      Rua Exemplo, 123 - Centro<br />
-                      São Paulo - SP
+                      Rua 10, 704 - Centro<br />
+                      Guaíra - SP<br />
+                      CEP: 14790-000
                     </Typography>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                     <PhoneIcon sx={{ color: 'primary.main', mr: 2, fontSize: 30 }} />
-                    <Typography>(11) 1234-5678</Typography>
+                    <Typography>(17) 98815-7666</Typography>
+                  </Box>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                    <WhatsAppIcon sx={{ color: 'primary.main', mr: 2, fontSize: 30 }} />
+                    <Typography 
+                      component="a" 
+                      href="https://wa.me/5517988157666" 
+                      target="_blank"
+                      sx={{ 
+                        color: 'inherit',
+                        textDecoration: 'none',
+                        '&:hover': {
+                          color: 'primary.main',
+                        }
+                      }}
+                    >
+                      (17) 98815-7666
+                    </Typography>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
                     <EmailIcon sx={{ color: 'primary.main', mr: 2, fontSize: 30 }} />
-                    <Typography>contato@allimport.com.br</Typography>
+                    <Typography>assistenciaallimport10@gmail.com</Typography>
                   </Box>
                 </Box>
                 <Typography variant="body1" sx={{ mt: 4 }}>
@@ -175,21 +101,36 @@ const Contact = () => {
               </Box>
             </motion.div>
           </Grid>
-        </Grid>
 
-        <Snackbar
-          open={openSnackbar}
-          autoHideDuration={6000}
-          onClose={() => setOpenSnackbar(false)}
-        >
-          <Alert
-            onClose={() => setOpenSnackbar(false)}
-            severity="success"
-            sx={{ width: '100%' }}
-          >
-            Mensagem enviada com sucesso! Entraremos em contato em breve.
-          </Alert>
-        </Snackbar>
+          <Grid item xs={12} md={6}>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Box
+                sx={{
+                  width: '100%',
+                  height: '450px',
+                  overflow: 'hidden',
+                  borderRadius: 2,
+                  boxShadow: 3,
+                }}
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3741.4777342535135!2d-48.3142385249888!3d-20.321873681156454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94bb0900624ebb57%3A0x7850bac2120928a8!2sALL%20IMPORT%20ASSISTENCIA%20TECNICA%20ESPECIALIZADA!5e0!3m2!1spt-BR!2sbr!4v1740431037064!5m2!1spt-BR!2sbr"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </Box>
+            </motion.div>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

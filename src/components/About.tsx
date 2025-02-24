@@ -1,24 +1,159 @@
+import React from 'react';
 import { Box, Container, Typography, Grid, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import TimerIcon from '@mui/icons-material/Timer';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 import SecurityIcon from '@mui/icons-material/Security';
+import BusinessIcon from '@mui/icons-material/Business';
+import mercadoLivreLogo from '../assets/mercadolivre.jpg';
+import garantiaLogo from '../assets/garantida.jpg';
+import segurancaLogo from '../assets/seguranca.jpg';
+import algarLogo from '../assets/algar.jpg';
 
 const features = [
   {
-    icon: <VerifiedIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
+    icon: (
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+        <VerifiedIcon sx={{ fontSize: 40, color: '#FF6B00' }} />
+      </Box>
+    ),
     title: 'Qualidade Garantida',
     description: 'Utilizamos apenas peças originais e oferecemos garantia em todos os serviços.',
+    customStyle: {
+      backgroundImage: `linear-gradient(to bottom, rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.68)), url(${garantiaLogo})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundImage: 'linear-gradient(145deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.05) 100%)',
+        opacity: 0.6,
+        transition: 'opacity 0.3s ease-in-out',
+        borderRadius: 2,
+        backdropFilter: 'blur(8px)',
+      },
+      '&:hover': {
+        transform: 'translateY(-8px)',
+        boxShadow: '0 8px 20px rgba(255, 107, 0, 0.3)',
+        '&::before': {
+          opacity: 0.65,
+          backgroundImage: 'linear-gradient(145deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 100%)',
+        }
+      },
+    }
   },
   {
-    icon: <TimerIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
-    title: 'Rapidez no Atendimento',
-    description: 'Consertos rápidos e eficientes, com prazo médio de 24 horas.',
+    icon: (
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+        <StorefrontIcon sx={{ fontSize: 40, color: '#FF6B00' }} />
+      </Box>
+    ),
+    title: 'Ponto Mercado Livre',
+    description: 'Somos um ponto oficial do Mercado Livre para retirada e envio de produtos.',
+    customStyle: {
+      backgroundImage: `linear-gradient(to bottom, rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.68)), url(${mercadoLivreLogo})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundImage: 'linear-gradient(145deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.05) 100%)',
+        opacity: 0.6,
+        transition: 'opacity 0.3s ease-in-out',
+        borderRadius: 2,
+        backdropFilter: 'blur(8px)',
+      },
+      '&:hover': {
+        transform: 'translateY(-8px)',
+        boxShadow: '0 8px 20px rgba(255, 107, 0, 0.3)',
+        '&::before': {
+          opacity: 0.65,
+          backgroundImage: 'linear-gradient(145deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 100%)',
+        }
+      },
+    }
   },
   {
-    icon: <SecurityIcon sx={{ fontSize: 40, color: 'primary.main' }} />,
+    icon: (
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+        <SecurityIcon sx={{ fontSize: 40, color: '#FF6B00' }} />
+      </Box>
+    ),
     title: 'Segurança Total',
     description: 'Seus dados estão seguros conosco. Realizamos backup quando necessário.',
+    customStyle: {
+      backgroundImage: `linear-gradient(to bottom, rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.68)), url(${segurancaLogo})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundImage: 'linear-gradient(145deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.05) 100%)',
+        opacity: 0.6,
+        transition: 'opacity 0.3s ease-in-out',
+        borderRadius: 2,
+        backdropFilter: 'blur(8px)',
+      },
+      '&:hover': {
+        transform: 'translateY(-8px)',
+        boxShadow: '0 8px 20px rgba(255, 107, 0, 0.3)',
+        '&::before': {
+          opacity: 0.65,
+          backgroundImage: 'linear-gradient(145deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 100%)',
+        }
+      },
+    }
+  },
+  {
+    icon: (
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+        <BusinessIcon sx={{ fontSize: 40, color: '#FF6B00' }} />
+      </Box>
+    ),
+    title: 'Credenciado Algar Telecom',
+    description: 'Somos assistência técnica credenciada oficial da Algar Telecom.',
+    customStyle: {
+      backgroundImage: `linear-gradient(to bottom, rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.68)), url(${algarLogo})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      position: 'relative',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundImage: 'linear-gradient(145deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.05) 100%)',
+        opacity: 0.6,
+        transition: 'opacity 0.3s ease-in-out',
+        borderRadius: 2,
+        backdropFilter: 'blur(8px)',
+      },
+      '&:hover': {
+        transform: 'translateY(-8px)',
+        boxShadow: '0 8px 20px rgba(255, 107, 0, 0.3)',
+        '&::before': {
+          opacity: 0.65,
+          backgroundImage: 'linear-gradient(145deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 100%)',
+        }
+      },
+    }
   },
 ];
 
@@ -27,15 +162,15 @@ const About = () => {
     <Box
       id="sobre"
       sx={{
-        bgcolor: 'background.paper',
+        background: 'linear-gradient(135deg, #1A1A1A 0%, #333333 100%)',
         minHeight: '100vh',
         width: '100%',
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        pt: '90px', // Altura do Navbar
-        pb: '90px', // Padding bottom igual ao top para centralização
+        pt: '90px',
+        pb: '90px',
       }}
     >
       <Container 
@@ -62,34 +197,22 @@ const About = () => {
               component="h2"
               variant="h3"
               align="center"
-              color="primary"
               sx={{
                 fontWeight: 'bold',
                 mb: 3,
-                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' }
+                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+                color: '#FF6B00',
+                textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
               }}
             >
               Sobre a All Import
             </Typography>
-            <Typography 
-              variant="h6" 
-              align="center" 
-              color="text.secondary" 
-              paragraph
-              sx={{
-                maxWidth: '800px',
-                mx: 'auto',
-                lineHeight: 1.8,
-                fontSize: { xs: '1rem', sm: '1.1rem', md: '1.25rem' }
-              }}
-            >
-              Somos especialistas em reparo de smartphones, com mais de 13 anos de experiência no mercado
-            </Typography>
+    
           </motion.div>
 
           <Grid container spacing={4}>
             {features.map((feature, index) => (
-              <Grid item xs={12} md={4} key={index}>
+              <Grid item xs={12} md={6} key={index}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -97,23 +220,32 @@ const About = () => {
                   viewport={{ once: true }}
                 >
                   <Paper
-                    elevation={2}
+                    elevation={3}
                     sx={{
                       p: { xs: 3, md: 4 },
-                      height: '100%',
+                      height: '307px',
+                      width: '736px',
+                      maxWidth: '100%',
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
+                      justifyContent: 'center',
                       textAlign: 'center',
                       borderRadius: 2,
+                      mx: 'auto',
+                      backdropFilter: 'blur(10px)',
+                      border: '1px solid rgba(255,255,255,0.1)',
                       transition: 'all 0.3s ease-in-out',
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: '0 8px 20px rgba(255, 107, 0, 0.2)',
-                      },
+                      ...feature.customStyle
                     }}
                   >
-                    <Box sx={{ mb: 2 }}>
+                    <Box 
+                      sx={{ 
+                        mb: 2,
+                        position: 'relative',
+                        zIndex: 1
+                      }}
+                    >
                       {feature.icon}
                     </Box>
                     <Typography 
@@ -122,17 +254,23 @@ const About = () => {
                       gutterBottom
                       sx={{ 
                         fontWeight: 600,
-                        color: 'primary.main',
-                        fontSize: { xs: '1.25rem', sm: '1.5rem' }
+                        color: '#FF6B00',
+                        fontSize: { xs: '1.25rem', sm: '1.5rem' },
+                        textShadow: '1px 1px 2px rgba(0,0,0,0.2)',
+                        position: 'relative',
+                        zIndex: 1
                       }}
                     >
                       {feature.title}
                     </Typography>
                     <Typography 
-                      color="text.secondary"
                       sx={{ 
                         lineHeight: 1.7,
-                        fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' }
+                        fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
+                        color: 'rgba(255,255,255,0.85)',
+                        position: 'relative',
+                        zIndex: 1,
+                        textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
                       }}
                     >
                       {feature.description}
@@ -151,13 +289,14 @@ const About = () => {
           >
             <Typography
               variant="body1"
-              color="text.secondary"
               align="center"
               sx={{ 
                 maxWidth: '900px',
                 mx: 'auto',
                 fontSize: { xs: '1rem', sm: '1.1rem' },
-                lineHeight: 1.8
+                lineHeight: 1.8,
+                color: 'rgba(255,255,255,0.8)',
+                textShadow: '1px 1px 2px rgba(0,0,0,0.2)'
               }}
             >
               Com mais de 13 anos de experiência no mercado, a All Import se destaca pela excelência

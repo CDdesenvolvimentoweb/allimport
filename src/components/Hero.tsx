@@ -141,24 +141,61 @@ const Hero: React.FC = () => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 height: '100%',
+                padding: '20px'
               }}
             >
-              <Box
-                component="img"
-                src={heroImage}
-                alt="Reparo de Smartphone"
-                sx={{
-                  width: '100%',
-                  maxWidth: '600px',
-                  height: 'auto',
-                  filter: 'drop-shadow(5px 5px 15px rgba(255,107,0,0.3))',
-                  transform: 'scale(1.1)',
-                  transition: 'transform 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'scale(1.15)',
-                  },
+              <motion.div
+                animate={{
+                  rotateY: [0, 360]
                 }}
-              />
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{
+                  perspective: 1000,
+                  transformStyle: "preserve-3d",
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center'
+                }}
+              >
+                <Box
+                  component="img"
+                  src={heroImage}
+                  alt="Reparo de Smartphone"
+                  sx={{
+                    width: {
+                      xs: '70%',
+                      sm: '60%',
+                      md: '80%'
+                    },
+                    maxWidth: {
+                      xs: '280px',
+                      sm: '320px',
+                      md: '400px'
+                    },
+                    height: 'auto',
+                    filter: 'drop-shadow(5px 5px 15px rgba(255,107,0,0.3))',
+                    transform: {
+                      xs: 'scale(0.9)',
+                      sm: 'scale(0.85)',
+                      md: 'scale(0.85)'
+                    },
+                    transition: 'transform 0.3s ease-in-out',
+                    '&:hover': {
+                      transform: {
+                        xs: 'scale(0.95)',
+                        sm: 'scale(0.89)',
+                        md: 'scale(0.89)'
+                      }
+                    },
+                    objectFit: 'contain',
+                    mx: 'auto'
+                  }}
+                />
+              </motion.div>
             </motion.div>
           </Grid>
         </Grid>

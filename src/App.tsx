@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
 import { motion } from 'framer-motion';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -187,9 +187,9 @@ function App() {
           <Routes>
             <Route path="/" element={<MainLayout />} />
             <Route path="/smartphones" element={<SmartphoneServices />} />
-            <Route path="/servicos/games" element={<GamesServices />} />
-            <Route path="/servicos/notebooks" element={<NotebookServices />} />
-            <Route path="/servicos/componentes" element={<ComponentServices />} />
+            <Route path="/games" element={<GamesServices />} />
+            <Route path="/notebooks" element={<NotebookServices />} />
+            <Route path="/componentes" element={<ComponentServices />} />
           </Routes>
         </Box>
       </Router>
