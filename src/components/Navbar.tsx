@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
 import { AppBar, Toolbar, Typography, Button, Container, useScrollTrigger, Slide, Box } from '@mui/material';
 import { motion } from 'framer-motion';
-import { Link as RouterLink } from 'react-router-dom';
 
 interface Props {
   window?: () => Window;
@@ -22,6 +21,16 @@ function HideOnScroll(props: Props) {
 }
 
 const Navbar = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
+
   return (
     <HideOnScroll>
       <AppBar 
@@ -50,14 +59,15 @@ const Navbar = () => {
             >
               <Typography 
                 variant="h6" 
-                component={RouterLink}
-                to="/"
+                component="a"
+                onClick={() => scrollToSection('inicio')}
                 sx={{
                   color: '#FF6B00',
                   fontWeight: 700,
                   fontSize: '2rem',
                   letterSpacing: '1.3px',
                   textDecoration: 'none',
+                  cursor: 'pointer',
                   '&:hover': {
                     color: '#CC5500',
                   },
@@ -74,8 +84,7 @@ const Navbar = () => {
               <Box sx={{ display: 'flex', gap: 1.5 }}>
                 <Button 
                   color="inherit"
-                  component={RouterLink}
-                  to="/"
+                  onClick={() => scrollToSection('inicio')}
                   sx={{ 
                     color: '#FFFFFF',
                     fontSize: '1.15rem',
@@ -90,8 +99,7 @@ const Navbar = () => {
                 </Button>
                 <Button 
                   color="inherit"
-                  component={RouterLink}
-                  to="/#servicos"
+                  onClick={() => scrollToSection('servicos')}
                   sx={{ 
                     color: '#FFFFFF',
                     fontSize: '1.15rem',
@@ -106,8 +114,7 @@ const Navbar = () => {
                 </Button>
                 <Button 
                   color="inherit"
-                  component={RouterLink}
-                  to="/#sobre"
+                  onClick={() => scrollToSection('sobre')}
                   sx={{ 
                     color: '#FFFFFF',
                     fontSize: '1.15rem',
@@ -122,8 +129,7 @@ const Navbar = () => {
                 </Button>
                 <Button 
                   variant="contained"
-                  component={RouterLink}
-                  to="/#contato"
+                  onClick={() => scrollToSection('contato')}
                   sx={{ 
                     bgcolor: '#FF6B00',
                     fontSize: '1.15rem',

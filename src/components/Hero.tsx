@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
       />
       
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
-      Grid
+        <Grid
           container 
           spacing={4} 
           alignItems="center" 
