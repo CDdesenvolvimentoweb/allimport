@@ -119,7 +119,7 @@ const Services = () => {
                 <Card
                   sx={{
                     height: '100%',
-                    minHeight: '300px',
+                    minHeight: '400px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
@@ -152,13 +152,14 @@ const Services = () => {
                     sx={{ 
                       textAlign: 'center', 
                       p: 0,
-                      height: '100%',
+                      flex: 1,
                       display: 'flex',
                       flexDirection: 'column',
-                      justifyContent: 'space-between'
+                      justifyContent: 'space-between',
+                      width: '100%'
                     }}
                   >
-                    <Box>
+                    <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                       <Typography 
                         gutterBottom 
                         variant="h5" 
@@ -177,6 +178,7 @@ const Services = () => {
                           color: 'rgba(255, 255, 255, 0.8)',
                           fontSize: '1rem',
                           lineHeight: 1.6,
+                          mb: 2
                         }}
                       >
                         {service.description}
@@ -188,7 +190,7 @@ const Services = () => {
                       to={service.link}
                       endIcon={<ArrowForwardIcon />}
                       sx={{
-                        mt: 3,
+                        mt: 'auto',
                         bgcolor: '#FF6B00',
                         color: '#FFFFFF',
                         textDecoration: 'none',

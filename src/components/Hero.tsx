@@ -95,8 +95,6 @@ const Hero: React.FC = () => {
                   size="large"
                   startIcon={<PhoneIphoneIcon />}
                   sx={{
-                    mr: 2,
-                    mb: { xs: 2, sm: 0 },
                     bgcolor: '#FF6B00',
                     fontSize: '1.2rem',
                     padding: '12px 30px',
@@ -107,25 +105,6 @@ const Hero: React.FC = () => {
                   onClick={() => window.open('https://wa.me/5517988157666?text=Olá,%20gostaria%20de%20fazer%20um%20orçamento!', '_blank')}
                 >
                   Agendar Conserto
-                </Button>
-                <Button
-                  variant="outlined"
-                  size="large"
-                  startIcon={<BuildIcon />}
-                  sx={{
-                    borderColor: '#FF6B00',
-                    color: '#FF6B00',
-                    fontSize: '1.2rem',
-                    padding: '12px 30px',
-                    '&:hover': {
-                      borderColor: '#CC5500',
-                      color: '#CC5500',
-                      bgcolor: 'rgba(255,107,0,0.08)',
-                    },
-                  }}
-                  href="#servicos"
-                >
-                  Nossos Serviços
                 </Button>
               </motion.div>
             </motion.div>

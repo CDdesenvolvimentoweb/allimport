@@ -12,6 +12,7 @@ import SmartphoneServices from './components/SmartphoneServices';
 import GamesServices from './components/GamesServices';
 import NotebookServices from './components/NotebookServices';
 import ComponentServices from './components/ComponentServices';
+import Footer from './components/Footer';
 
 const theme = createTheme({
   palette: {
@@ -191,6 +192,7 @@ function App() {
             <Route path="/notebooks" element={<NotebookServices />} />
             <Route path="/componentes" element={<ComponentServices />} />
           </Routes>
+          <Footer />
         </Box>
       </Router>
     </ThemeProvider>

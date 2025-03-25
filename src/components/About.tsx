@@ -18,7 +18,7 @@ const features = [
       </Box>
     ),
     title: 'Qualidade Garantida',
-    description: 'Utilizamos apenas peças originais e oferecemos garantia em todos os serviços.',
+    description: 'Também utilizamos peças originais e oferecemos garantia em todos os serviços.',
     customStyle: {
       backgroundImage: `linear-gradient(to bottom, rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.68)), url(${garantiaLogo})`,
       backgroundSize: 'cover',
